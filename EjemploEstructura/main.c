@@ -17,7 +17,7 @@ int main()
 {
 
 
-
+eAlumnos listadoAlumnos[5];
 
 
 
