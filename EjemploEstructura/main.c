@@ -15,14 +15,13 @@ typedef struct
 }eAlumno;
 
 eAlumno pedirAlumno(void);
+void mostrarAlumno(eAlumno alumno );
 int buscarLugarLibre (eAlumno[], int); // devuelve entero le paso lugar me falta el alumno
 int buscarIndiceDelAlumno(eAlumno listado[], int legajo, int cantidad);
 int insertarAlumnoEnLaLista(eAlumno[]);
-eAlumno pedirAlumno(void); // carga los datos del alumno
 void mostrarListado (eAlumno listado[], int cantidad);
-float calcularPromedio (int, int);
 ordenarPorPromedio(eAlumno[], int cantidad);
-
+float calcularPromedio(int, int );
 // main menu de usuarios
 // completar funciones faltantes
 
@@ -33,6 +32,7 @@ int main()
     eAlumno listadoAlumnos;
 
     listadoAlumnos = pedirAlumno();
+    mostrarAlumno(listadoAlumnos);
     /*(i=0;i<TAM;i++)
     {
         listadoDelMain[i].estado=0; // inicializo todos los elementos de estado en 0
@@ -50,10 +50,25 @@ int main()
     return 0;
 }
 
-/*void mostrarAlumno(eAlumnos aluAux )
+
+
+float calcularPromedio (int nota, int nota2)
 {
-    printf("el legajo es : %d",aluAux.legajo );
-void mostrarAlumnos(eAlumnos listado[], int TAM)
+    float promedio;
+    promedio = (float)(nota+nota2)/2;
+    return promedio;
+}
+void mostrarAlumno(eAlumno alumno )
+{
+    printf("Numero legajo: %d", alumno.legajo);
+    printf("\nNombre del Alumno: %s", alumno.nombre);
+    printf("\nPrimer Nota: %d", alumno.notaUno);
+    printf("\nSegunda Nota: %d", alumno.notaDos);
+    printf("\nPromedio Notas: %f", alumno.promedio);
+}
+
+
+/*void mostrarAlumnos(eAlumno listado[], int TAM)
 {
     int i;
     for (i = 0; i < c5; i++)
@@ -74,6 +89,7 @@ eAlumno pedirAlumno()
     scanf("%d", &listadoAlumnos.notaUno);
     printf("Ingrese Nota Dos: ");
     scanf("%d", &listadoAlumnos.notaDos);
+    // listadoAlumnos.promedio = calcularPromedio(int listadoAlumnos.notaUno, int listadoAlumnos.notaDos);
     return listadoAlumnos;
 }
 /*
