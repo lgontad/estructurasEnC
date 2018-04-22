@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define TAM 5
+#define TAM 3
 
 typedef struct
 {
@@ -29,23 +29,18 @@ int main()
 {
 
     int i;
-    eAlumno listadoAlumnos;
+    eAlumno listadoAlumnos[TAM];
 
-    listadoAlumnos = pedirAlumno();
-    mostrarAlumno(listadoAlumnos);
-    /*(i=0;i<TAM;i++)
+    listadoAlumnos[TAM]= pedirAlumno();
+    mostrarAlumno(listadoAlumnos[TAM]);
+    for (i=0;i<TAM;i++)
     {
-        listadoDelMain[i].estado=0; // inicializo todos los elementos de estado en 0
+        listadoAlumnos[i].estado=0; // inicializo todos los elementos de estado en 0
     }
-    eAlumnos aluDelMain;
-
-    aluDelMain= pedirAlumno();
-
-    mostrarAlumno(aluDelMain);*/
 
 
-
-
+    /*listadoAlumnos = pedirAlumno();
+    mostrarAlumno(listadoAlumnos);*/
 
     return 0;
 }
@@ -80,6 +75,12 @@ void mostrarAlumno(eAlumno alumno )
 eAlumno pedirAlumno()
 {
     eAlumno listadoAlumnos;
+    int indice;
+    indice = buscarLugarLibre(listadoAlumnos[], TAM);
+    if (indice != -1)
+    {
+    eAlumno listadoAlumnos;
+    printf("Ingrese los datos solicitados: ");
     printf("Ingrese Legajo: " );
     scanf("%d", &listadoAlumnos.legajo);
     printf("Ingrese Nombre del Alumno: ");
@@ -89,16 +90,21 @@ eAlumno pedirAlumno()
     scanf("%d", &listadoAlumnos.notaUno);
     printf("Ingrese Nota Dos: ");
     scanf("%d", &listadoAlumnos.notaDos);
-    // listadoAlumnos.promedio = calcularPromedio(int listadoAlumnos.notaUno, int listadoAlumnos.notaDos);
+    listadoAlumnos.promedio = calcularPromedio(listadoAlumnos.notaUno, listadoAlumnos.notaDos);
     return listadoAlumnos;
+    }
+    else
+    {
+        printf("No hay lugares disponible");
+    }
 }
-/*
-int buscarLugarLibre (eAlumnos listado[], int tam)
+
+int buscarLugarLibre (eAlumno listadoAlumnos[], TAM)
 {
     int indice = -1;
     int i;
-    for (i=0;i<tam;i++)
-    {        if (listado[i].estado=0)
+    for (i=0;i<TAM;i++)
+    {        if (listadoAlumnos[i].estado==0)
         {
             indice = i;
             break;
@@ -106,4 +112,3 @@ int buscarLugarLibre (eAlumnos listado[], int tam)
     }
     return indice;
 }
-*/
